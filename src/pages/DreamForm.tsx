@@ -1,13 +1,14 @@
 import Breadcrumb from '../components/Breadcrumb';
 import { DefaultStepper } from '../components/Stepper';
-import useDreamHandler from '../hooks/useDreamHandler';
+import useCreateDreamHandler from '../hooks/useCreateDreamHandler';
 
 const OrderForm = () => {
   const {
     title,
     description,
     setTitle,
-    setDescription } = useDreamHandler();
+    setDescription,
+    register } = useCreateDreamHandler();
 
   return (
     <>
@@ -54,7 +55,8 @@ const OrderForm = () => {
                     className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                   ></textarea>
                 </div>
-                <button className="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray">
+                <button className="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray"
+                  onClick={() => register()}>
                   Registrar
                 </button>
               </div>
