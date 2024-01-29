@@ -1,7 +1,7 @@
 // useCep.js
 import { useState, useEffect } from 'react';
 import fireToast from './fireToast';
-import { axiosInstance } from '../utils/axios';
+import { base } from '../utils/axios/axiosFactory';
 
 const useTableDream = () => {
 
@@ -10,8 +10,8 @@ const useTableDream = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axiosInstance.get('/dreams/');
-
+                const response = await base.get('/dreams/');
+                console.log(response)
                 if (response.status === 200) {
                     console.log(response.data)
                     setDreams(response.data);
@@ -19,6 +19,7 @@ const useTableDream = () => {
                     console.error('Erro ao obter dados da API');
                 }
             } catch (error) {
+                console.log(error)
                 console.error('Erro ao processar a solicitação:', error);
             }
         };

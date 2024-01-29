@@ -25,113 +25,38 @@ const TableThree = () => {
               </th>
             </tr>
           </thead>
+
           <tbody>
-            <tr>
-              <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
-                <h5 className="font-medium text-black dark:text-white">
-                  Free Package
-                </h5>
-                <p className="text-sm">$0.00</p>
-              </td>
-              <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                <p className="text-black dark:text-white">Jan 13,2023</p>
-              </td>
-              <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                <p className="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                  Sonho
-                </p>
-              </td>
-              <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                <div className="flex items-center space-x-3.5">
-                  <button className="hover:text-primary">
-                    <IconEye></IconEye>
-                  </button>
-                  <button className="hover:text-primary">
-                    <IconTrash></IconTrash>
-                  </button>
+            {dreams.map((dream) => {
+              console.log(dream)
+              return (<tr>
+                <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
+                  <h5 className="font-medium text-black dark:text-white">
+                    {dream.title}
+                  </h5>
+                  <p className="text-sm">$0.00</p>
+                </td>
+                <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                  <p className="text-black dark:text-white">Jan 13,2023</p>
+                </td>
+                <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                  <p className="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
+                    {dream.category}
+                  </p>
+                </td>
+                <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                  <div className="flex items-center space-x-3.5">
+                    <button className="hover:text-primary">
+                      <IconEye></IconEye>
+                    </button>
+                    <button className="hover:text-primary">
+                      <IconTrash></IconTrash>
+                    </button>
 
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
-                <h5 className="font-medium text-black dark:text-white">
-                  Standard Package
-                </h5>
-                <p className="text-sm">$59.00</p>
-              </td>
-              <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                <p className="text-black dark:text-white">Jan 13,2023</p>
-              </td>
-              <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                <p className="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                  Sonho
-                </p>
-              </td>
-              <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                <div className="flex items-center space-x-3.5">
-                  <button className="hover:text-primary">
-                    <IconEye></IconEye>
-                  </button>
-                  <button className="hover:text-primary">
-                    <IconTrash></IconTrash>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
-                <h5 className="font-medium text-black dark:text-white">
-                  Business Package
-                </h5>
-                <p className="text-sm">$99.00</p>
-              </td>
-              <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                <p className="text-black dark:text-white">Jan 13,2023</p>
-              </td>
-              <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                <p className="inline-flex rounded-full bg-danger bg-opacity-10 py-1 px-3 text-sm font-medium text-danger">
-                  Pesadelo
-                </p>
-              </td>
-              <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                <div className="flex items-center space-x-3.5">
-                  <button className="hover:text-primary">
-                    <IconEye></IconEye>
-                  </button>
-                  <button className="hover:text-primary">
-                    <IconTrash></IconTrash>
-                  </button>
-
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-5 px-4 pl-9 xl:pl-11">
-                <h5 className="font-medium text-black dark:text-white">
-                  Standard Package
-                </h5>
-                <p className="text-sm">$59.00</p>
-              </td>
-              <td className="py-5 px-4">
-                <p className="text-black dark:text-white">Jan 13,2023</p>
-              </td>
-              <td className="py-5 px-4">
-                <p className="inline-flex rounded-full bg-warning bg-opacity-10 py-1 px-3 text-sm font-medium text-warning">
-                  Lúcido
-                </p>
-              </td>
-              <td className="py-5 px-4">
-                <div className="flex items-center space-x-3.5">
-                  <button className="hover:text-primary">
-                    <IconEye></IconEye>
-                  </button>
-                  <button className="hover:text-primary">
-                    <IconTrash></IconTrash>
-                  </button>
-                </div>
-              </td>
-            </tr>
+                  </div>
+                </td>
+              </tr>)
+            })}
           </tbody>
         </table>
       </div>

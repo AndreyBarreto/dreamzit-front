@@ -1,7 +1,8 @@
 // useCep.js
 import { useState } from 'react';
 import fireToast from './fireToast';
-import { axiosInstance } from '../utils/axios';
+import { base } from '../utils/axios/axiosFactory';
+
 
 const useCreateDreamHandler = () => {
 
@@ -9,7 +10,7 @@ const useCreateDreamHandler = () => {
     const [description, setDescription] = useState('');
 
     const register = () => {
-        axiosInstance.post('/dreams/', { data: 'conteudo' })
+        base.post('/dreams/', { data: 'conteudo' })
             .then(response => {
                 console.log('Resposta da requisição:', response.data);
             })
