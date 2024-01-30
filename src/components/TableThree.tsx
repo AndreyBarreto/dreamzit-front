@@ -1,9 +1,13 @@
 import useTableDream from "../hooks/useTableDream";
 import IconEye from "../images/icon/icon-eye";
 import IconTrash from "../images/icon/icon-trash";
+import { Dream } from "../types/dreams";
+import { dateFormatter } from "../utils/dataFormatter";
+
 const TableThree = () => {
 
   const { dreams } = useTableDream()
+
 
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
@@ -27,17 +31,16 @@ const TableThree = () => {
           </thead>
 
           <tbody>
-            {dreams.map((dream) => {
-              console.log(dream)
+            {dreams.map((dream: Dream) => {
               return (<tr>
                 <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                   <h5 className="font-medium text-black dark:text-white">
                     {dream.title}
                   </h5>
-                  <p className="text-sm">$0.00</p>
+                  {/* <p className="text-sm">$0.00</p> */}
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                  <p className="text-black dark:text-white">Jan 13,2023</p>
+                  <p className="text-black dark:text-white">{dateFormatter(dream.created_at)}</p>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <p className="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
