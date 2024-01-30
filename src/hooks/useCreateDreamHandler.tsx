@@ -8,8 +8,9 @@ const useCreateDreamHandler = () => {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [feelings, setFellings] = useState([])
 
-    const register = () => {
+    const onSubmit = () => {
         base.post('/dreams/', { data: 'conteudo' })
             .then(response => {
                 console.log('Resposta da requisição:', response.data);
@@ -21,10 +22,12 @@ const useCreateDreamHandler = () => {
 
     return {
         description,
-        setDescription,
         title,
+        feelings,
+        setDescription,
         setTitle,
-        register
+        onSubmit,
+        setFellings
     };
 };
 
