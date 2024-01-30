@@ -19,14 +19,17 @@ const useCreateDreamHandler = () => {
             tags: feelings
         })
             .then(response => {
-
                 fireToast('Registrado', 'sonho registrado com sucesso', '0')
-                // window.location.href = '/tables'
+                window.location.href = '/tables'
 
             })
             .catch(error => {
-                fireToast(error.message, error.message)
-                console.error('Erro na requisição:', error);
+                if (error.response.status == 400) {
+                    fireToast('Problema ao enviar os dados', 'verifique se as informações estão corretas')
+                }
+                else {
+                    fireToast('Problema no servidor', 'entre em contato com o desenvolvedor')
+                }
             });
     }
 

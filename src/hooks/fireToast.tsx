@@ -51,7 +51,7 @@ const fireToast = (title: string, msg: string, type?: string) => {
       </div>
 
     </div>
-  ), { duration: 120 })
+  ))
 };
 
 

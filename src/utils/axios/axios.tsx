@@ -19,7 +19,7 @@ export const createAxiosInstance = ({ baseURL = process.env.BACK_URL, path = "" 
     axiosInstance.interceptors.response.use((response) => {
         return response
     }, async function (err) {
-        console.log(err)
+        return axios(err.config);
         // const originalRequest = err.config
         // window.location.href = '/login'
         // return axios(originalRequest)
