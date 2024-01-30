@@ -11,12 +11,21 @@ const useCreateDreamHandler = () => {
     const [description, setDescription] = useState('');
     const [feelings, setFellings] = useState<string[]>([]);
 
-    const onSubmit = () => {
-        base.post('/dreams/', { data: 'conteudo' })
+    const onSubmit = async () => {
+        await base.post('/dreams/', {
+
+            title,
+            description,
+            tags: feelings
+        })
             .then(response => {
-                console.log('Resposta da requisição:', response.data);
+
+                fireToast('Registrado', 'sonho registrado com sucesso', '0')
+                // window.location.href = '/tables'
+
             })
             .catch(error => {
+                fireToast(error.message, error.message)
                 console.error('Erro na requisição:', error);
             });
     }
