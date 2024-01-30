@@ -7,8 +7,9 @@ import { base } from '../utils/axios/axiosFactory';
 const useCreateDreamHandler = () => {
 
     const [title, setTitle] = useState('');
+    const [dreamType, setDreamType] = useState('');
     const [description, setDescription] = useState('');
-    const [feelings, setFellings] = useState([])
+    const [feelings, setFellings] = useState<string[]>([]);
 
     const onSubmit = () => {
         base.post('/dreams/', { data: 'conteudo' })
@@ -20,6 +21,20 @@ const useCreateDreamHandler = () => {
             });
     }
 
+    const removeFelling = (deleted_feeling: string) => {
+        const updatedFeelings = feelings.filter(feeling => feeling !== deleted_feeling);
+        setFellings(updatedFeelings)
+    }
+
+    const addFelling = (feeling: string) => {
+        if (feeling in feelings) {
+            return
+        }
+        console.log('oi')
+        setFellings([...feelings, feeling])
+
+    }
+
     return {
         description,
         title,
@@ -27,7 +42,9 @@ const useCreateDreamHandler = () => {
         setDescription,
         setTitle,
         onSubmit,
-        setFellings
+        setFellings,
+        removeFelling,
+        addFelling,
     };
 };
 
