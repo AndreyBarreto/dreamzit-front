@@ -11,14 +11,20 @@ export const createAxiosInstance = ({ baseURL = process.env.BACK_URL, path = "" 
     });
 
     axiosInstance.interceptors.request.use((config) => {
-        const jwt = localStorage.getItem('jwt')
-        config.headers.Authorization = `Token ${jwt}`
+        const jwt = localStorage.getItem('jwtToken')
+        config.headers.Authorization = `Bearer ${jwt}`
         return config
     })
 
     axiosInstance.interceptors.response.use((response) => {
         return response
     }, async function (err) {
+        let statusCode = err.response.status
+        if (window.location.pathname == '/signin') {
+        }
+        else if (statusCode == 401) {
+            window.location.href = '/signin'
+        }
         return axios(err.config);
         // const originalRequest = err.config
         // window.location.href = '/login'

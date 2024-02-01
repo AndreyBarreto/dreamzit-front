@@ -26,8 +26,8 @@ function App() {
         containerClassName="overflow-auto"
       />
       <Routes>
-        <Route path="/auth/signin" element={<SignIn />} />
-        <Route path="/auth/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route element={<DefaultLayout />}>
           <Route index element={<Tables />} />
           {routes.map((routes, index) => {

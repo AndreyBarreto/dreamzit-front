@@ -22,11 +22,11 @@ const coreRoutes = [
     title: 'Tables',
     component: Tables,
   },
-  {
-    path: '/settings',
-    title: 'Settings',
-    component: Settings,
-  },
+  // {
+  //   path: '/settings',
+  //   title: 'Settings',
+  //   component: Settings,
+  // },
 ];
 
 const routes = [...coreRoutes];
