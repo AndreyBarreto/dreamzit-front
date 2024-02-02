@@ -58,11 +58,11 @@ const OrderForm = () => {
                 </div>
               </div>
               <div className='mb-3'>
-                <label className="mb-3 block text-black dark:text-white">
+                <label className={`mb-3 block text-black dark:text-white `}>
                   Sentimentos
                 </label>
                 <div className="relative z-20 w-full rounded border border-stroke p-1.5 pr-8 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
-                  <div className="flex flex-wrap items-center">
+                  <div className={`flex flex-wrap items-center ${feelings.length == 0 ? 'm-4' : ""}`}>
                     {feelings.map((e) => {
                       return (
                         <span className="m-1.5  flex items-center justify-center rounded border-[.5px] border-stroke bg-gray py-1.5 px-2.5 text-sm font-medium dark:border-strokedark dark:bg-white/30">

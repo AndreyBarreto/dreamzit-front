@@ -11,6 +11,7 @@ const DefaultLayout = lazy(() => import('./layout/DefaultLayout'));
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
+  const [token, setToken] = useState(localStorage.getItem('jwtToken'))
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
@@ -26,25 +27,29 @@ function App() {
         containerClassName="overflow-auto"
       />
       <Routes>
+        <Route path="/" element={<SignIn />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route element={<DefaultLayout />}>
-          <Route index element={<Tables />} />
-          {routes.map((routes, index) => {
-            const { path, component: Component } = routes;
-            return (
-              <Route
-                key={index}
-                path={path}
-                element={
-                  <Suspense fallback={<Loader />}>
-                    <Component />
-                  </Suspense>
-                }
-              />
-            );
-          })}
-        </Route>
+        {token ?
+          <Route element={<DefaultLayout />}>
+            <Route index element={<Tables />} />
+            {routes.map((routes, index) => {
+              const { path, component: Component } = routes;
+              return (
+                <Route
+                  key={index}
+                  path={path}
+                  element={
+                    <Suspense fallback={<Loader />}>
+                      <Component />
+                    </Suspense>
+                  }
+                />
+              );
+            })}
+          </Route> : ""
+        }
+
       </Routes>
     </>
   );
