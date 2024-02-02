@@ -13,7 +13,17 @@ jobs:
       - name: Installing Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "20"
+
+      - name: Set .env file based on branch
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            cp .env.production .env
+          elif [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
+            cp .env.staging .env
+          else
+            echo "No specific .env file for this branch."
+          fi
 
       - name: Installing dependencies
         run: npm install
