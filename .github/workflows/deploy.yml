@@ -29,7 +29,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Deploy to S3 bucket
-        run: aws s3 sync ./build/ s3://dreamzit --delete
+        run: aws s3 sync ./dist/ s3://dreamzit --delete
 
       - name: Set CloudFront Distribution ID as Environment Variable
         run: echo "CLOUDFRONT_DISTRIBUTION_ID=${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" >> $GITHUB_ENV
