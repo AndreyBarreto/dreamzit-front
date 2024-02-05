@@ -6,6 +6,7 @@ import { base } from '../utils/axios/axiosFactory';
 const useTableDream = () => {
 
     const [dreams, setDreams] = useState([]);
+    const [isOpen, setIsOpen] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -28,7 +29,9 @@ const useTableDream = () => {
     }, []);
 
     return {
-        dreams
+        dreams,
+        setIsOpen,
+        isOpen
     };
 };
 

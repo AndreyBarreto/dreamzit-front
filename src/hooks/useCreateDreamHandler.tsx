@@ -10,6 +10,7 @@ const useCreateDreamHandler = () => {
     const [dreamType, setDreamType] = useState('');
     const [description, setDescription] = useState('');
     const [feelings, setFellings] = useState<string[]>([]);
+    const [isLoading, setIsLoading] = useState(false)
 
     const onSubmit = async () => {
         await base.post('/dreams/', {

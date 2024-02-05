@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import fireToast from './fireToast';
 import { base } from '../utils/axios/axiosFactory';
 import { AxiosError } from 'axios';
+import { setJwtToken, setRefreshToken } from '../utils/token';
 
 const useSignIn = () => {
 
@@ -19,7 +20,8 @@ const useSignIn = () => {
             const response = await base.post('/token/', {
                 username, password
             })
-            localStorage.setItem('jwtToken', response.data.access);
+            setJwtToken(response.data.access)
+            setRefreshToken(response.data.refresh)
             window.location.href = '/tables'
 
         }

@@ -3,14 +3,16 @@ import IconEye from "../images/icon/icon-eye";
 import IconTrash from "../images/icon/icon-trash";
 import { Dream } from "../types/dreams";
 import { dateFormatter } from "../utils/dataFormatter";
+import { Modal } from "./ModalSettings";
 
 const TableThree = () => {
 
-  const { dreams } = useTableDream()
+  const { dreams, isOpen, setIsOpen } = useTableDream()
 
 
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen}></Modal>
       <div className="max-w-full overflow-x-auto">
         <table className="w-full table-auto">
           <thead>
@@ -49,7 +51,9 @@ const TableThree = () => {
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <div className="flex items-center space-x-3.5">
-                    <button className="hover:text-primary">
+                    <button className="hover:text-primary"
+                      onClick={() => setIsOpen(true)}
+                    >
                       <IconEye></IconEye>
                     </button>
                     <button className="hover:text-primary">
