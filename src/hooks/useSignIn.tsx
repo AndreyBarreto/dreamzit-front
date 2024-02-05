@@ -8,11 +8,13 @@ const useSignIn = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [isLoading, setIsLoading] = useState(false)
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        setIsLoading(true)
         try {
             const response = await base.post('/token/', {
                 username, password
@@ -28,7 +30,9 @@ const useSignIn = () => {
             fireToast('Problema com o servidor', 'Entre em contato com o desenvolvedor')
 
         }
-
+        finally {
+            setIsLoading(false)
+        }
 
     }
 
@@ -37,7 +41,9 @@ const useSignIn = () => {
         username,
         setPassword,
         password,
-        handleSubmit
+        handleSubmit,
+        setIsLoading,
+        isLoading
     };
 };
 
