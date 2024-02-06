@@ -2,12 +2,13 @@
 import { useState, useEffect } from 'react';
 import fireToast from './fireToast';
 import { base } from '../utils/axios/axiosFactory';
+import { Dream } from '../types/dreams';
 
 const useTableDream = () => {
 
-    const [dreams, setDreams] = useState([]);
+    const [dreams, setDreams] = useState<Dream[]>([]);
     const [isOpen, setIsOpen] = useState(false)
-
+    const [selectedDream, setSelectedDream] = useState<Dream>()
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -28,10 +29,20 @@ const useTableDream = () => {
         fetchData();
     }, []);
 
+    const handleDream = async (dream_id: number) => {
+        const response = await base.get(`/dreams/${dream_id}`)
+        setSelectedDream(response.data)
+        console.log(response.data)
+
+    }
+
+
     return {
         dreams,
         setIsOpen,
-        isOpen
+        isOpen,
+        handleDream,
+        selectedDream
     };
 };
 

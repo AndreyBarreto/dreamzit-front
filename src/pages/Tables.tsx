@@ -5,10 +5,7 @@ const Tables = () => {
   return (
     <>
       <Breadcrumb pageName="Sonhos" />
-
-      {/* <div className="flex flex-col gap-10"> */}
       <TableThree />
-      {/* </div> */}
     </>
   );
 };

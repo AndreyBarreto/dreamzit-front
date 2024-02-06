@@ -7,11 +7,11 @@ import { Modal } from "./ModalSettings";
 
 const TableThree = () => {
 
-  const { dreams, isOpen, setIsOpen } = useTableDream()
+  const { dreams, isOpen, setIsOpen, handleDream, selectedDream } = useTableDream()
 
 
   return (<>
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen}></Modal>
+    <Modal isOpen={isOpen} setIsOpen={setIsOpen} data={selectedDream}></Modal>
     <div className={`rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1 ${isOpen ? "blur-sm" : ""}`}>
       <div className="max-w-full overflow-x-auto">
         <table className="w-full table-auto">
@@ -52,9 +52,13 @@ const TableThree = () => {
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <div className="flex items-center space-x-3.5">
                     <button className="hover:text-primary"
-                      onClick={() => setIsOpen(true)}
+                      onClick={() => {
+                        setIsOpen(true);
+                        handleDream(dream.id);
+                      }
+                      }
                     >
-                      <IconEye></IconEye>
+                      <IconEye ></IconEye>
                     </button>
                     <button className="hover:text-primary">
                       <IconTrash></IconTrash>
@@ -67,7 +71,7 @@ const TableThree = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </div >
   </>
   );
 };

@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import dataJSON from '../../public/data.json';
+import { Dream } from "../types/dreams";
 
 
+interface IModal {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  data: Dream | undefined;
+}
 
-export const Modal = ({ isOpen, setIsOpen }) => {
+export const Modal = ({ isOpen, setIsOpen, data }: IModal) => {
 
 
   const handleChange = (e) => {
@@ -46,29 +52,25 @@ export const Modal = ({ isOpen, setIsOpen }) => {
                 <label className="mb-3 block text-sm font-medium text-black dark:text-white"
                   htmlFor="id">Título</label>
                 <input className="w-full rounded border border-stroke bg-gray py-3 pl-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                  name="id" disabled />
-              </div>
-              <div className="form-group w-full">
-                <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="value">Descrição</label>
-                <input className="w-full rounded border border-stroke bg-gray py-3 pl-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                  name="value" disabled />
+                  name="id" disabled
+                  value={data?.title}
+                />
               </div>
               <div className="form-group w-full">
                 <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="value">Tipo de sonho</label>
                 <input className="w-full rounded border border-stroke bg-gray py-3 pl-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                  name="value" disabled />
+                  name="value" disabled value={data?.category} />
               </div>
               <div className="form-group w-full">
                 <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="value">Sentimentos</label>
                 <input className="w-full rounded border border-stroke bg-gray py-3 pl-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                   name="value" disabled />
               </div>
-
             </div>
             <div className="form-group w-full mt-3">
               <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="value">Descrição</label>
               <textarea className="w-full rounded border border-stroke bg-gray py-3 pl-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                name="value" disabled />
+                name="value" disabled value={data?.description} />
             </div>
 
             <br></br>
