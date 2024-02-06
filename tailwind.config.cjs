@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -179,6 +179,7 @@ module.exports = {
         270: '67.5rem',
         280: '70rem',
         292.5: '73.125rem',
+        300: '91rem',
       },
       maxHeight: {
         35: '8.75rem',
@@ -251,4 +252,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

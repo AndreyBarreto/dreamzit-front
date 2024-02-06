@@ -27,7 +27,7 @@ export const Modal = ({ isOpen, setIsOpen }) => {
 
   return (<>
     {isOpen ? <div
-      className="z-50 fixed w-3/4"
+      className="z-50 fixed w-3/4 max-w-300"
     // onClick={(e) => {
     //   if (e.target.className === "modal-container") setIsOpen(false);
     // }}
